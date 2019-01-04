@@ -1,0 +1,14 @@
+- name: Create virtual machine
+azure_rm_virtualmachine:
+  resource_group: awx-inventory
+  name: testvm10
+  vm_size: Standard_D1
+  admin_username: awx-account
+  ssh_password_enabled: true
+  admin_password: '.5xOB:9HQF<-K3'
+  image:
+    offer: CentOS
+    publisher: OpenLogic
+    sku: '7.1'
+    version: latest
+
