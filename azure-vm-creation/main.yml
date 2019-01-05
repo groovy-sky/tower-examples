@@ -1,4 +1,5 @@
 ---
+- hosts: all
   tasks:
   - name: Create virtual machine
     azure_rm_virtualmachine:
