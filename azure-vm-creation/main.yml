@@ -1,8 +1,8 @@
 ---
 - hosts: all
   tasks:
-- name: Create virtual machine
-  azure_rm_virtualmachine:
+  - name: Create virtual machine
+    azure_rm_virtualmachine:
    resource_group: awx-inventory
    name: testvm10
    vm_size: Standard_D1
