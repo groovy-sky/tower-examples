@@ -7,8 +7,8 @@
      resource_group: "{{ vm_resource_group }}"
      name: "{{ vm_name }}"
      vm_size: Standard_D1
-     admin_username: awx-account
      ssh_password_enabled: true
+     admin_username: "{{ vm_admin_username }}"
      admin_password: "{{ vm_admin_password }}"
      image:
        offer: UbuntuServer
