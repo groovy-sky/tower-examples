@@ -4,15 +4,15 @@
   tasks:
   - name: Create virtual machine
     azure_rm_virtualmachine:
-     resource_group: awx-inventory
-     name: awx-node-01
+     resource_group: "{{ vm_resource_group }}"
+     name: "{{ vm_name }}"
      vm_size: Standard_D1
      admin_username: awx-account
      ssh_password_enabled: true
-     admin_password: "{{ admin_password }}"
+     admin_password: "{{ vm_admin_password }}"
      image:
-       offer: CentOS
-       publisher: OpenLogic
-       sku: '7.1'
+       offer: UbuntuServer
+       publisher: Canonical
+       sku: '16.04-LTS'
        version: latest
 
