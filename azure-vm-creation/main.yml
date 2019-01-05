@@ -5,7 +5,7 @@
   - name: Create virtual machine
     azure_rm_virtualmachine:
      resource_group: awx-inventory
-     name: testvm10
+     name: awx-node-01
      vm_size: Standard_D1
      admin_username: awx-account
      ssh_password_enabled: true
