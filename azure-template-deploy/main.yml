@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: Create virtual machine
+    azure_rm_virtualmachine:
+     resource_group: "{{ vm_resource_group }}"
+     name: "{{ vm_name }}"
+     vm_size: Standard_D1
+     ssh_password_enabled: true
+     admin_username: "{{ vm_admin_username }}"
+     admin_password: "{{ vm_admin_password }}"
+     image:
+       offer: UbuntuServer
+       publisher: Canonical
+       sku: '16.04-LTS'
+       version: latest
+   - name: Create Azure Deploy
+     azure_rm_deployment:
+      state: present
+      resource_group_name: "{{ deployment_group  }}"
+      template_link: ''
+        $schema: "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#"
+        contentVersion: "1.0.0.0"
+        parameters:
+         newStorageAccountName:
+          type: "string"
+          metadata:
+            description: "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+         adminUsername:
+          type: "string"
+          metadata:
+            description: "User name for the Virtual Machine."
