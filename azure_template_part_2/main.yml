@@ -1,0 +1,28 @@
+# Destroy a template deployment
+- name: Destroy Azure Deploy
+  azure_rm_deployment:
+    state: absent
+    subscription_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    resource_group_name: dev-ops-cle
+
+# Create or update a template deployment based on uris using parameter and template links
+- name: Create Azure Deploy
+  azure_rm_deployment:
+    state: present
+    resource_group_name: dev-ops-cle
+    template_link: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json'
+    parameters_link: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.parameters.json'
+
+# Create or update a template deployment based on a uri to the template and parameters specified inline.
+# This deploys a VM with SSH support for a given public key, then stores the result in 'azure_vms'. The result is then
+# used to create a new host group. This host group is then used to wait for each instance to respond to the public IP SSH.
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Destroy Azure Deploy
+      azure_rm_deployment:
+        state: absent
+        subscription_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        resource_group_name: dev-ops-cle
