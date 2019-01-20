@@ -1,18 +1,20 @@
 ---
-# Create a Resouce Group
-- name: Create Resource Group
-  azure_rm_resourcegroup:
-    state: present
-    location: "{{ deploy_group_location }}"
-    resource_group_name: "{{ deploy_group_name }}"
+- hosts: localhost
+  connection: local
+  tasks:
+    # Create a Resouce Group
+    - name: Create Resource Group
+    azure_rm_resourcegroup:
+        state: present
+        location: "{{ deploy_group_location }}"
+        resource_group_name: "{{ deploy_group_name }}"
 
-# Create or update a template deployment based on uris using parameter and template links
-- name: Create Azure Deploy
-  azure_rm_deployment:
-    state: present
-    resource_group_name: "{{ deploy_group_name }}"
-    template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
-    parameters:
-          vmadminPassword: 
-          value: "{{ vm_admin_password }}"
-    
+    # Create or update a template deployment based on uris using parameter and template links
+    - name: Create Azure Deploy
+    azure_rm_deployment:
+        state: present
+        resource_group_name: "{{ deploy_group_name }}"
+        template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
+        parameters:
+            vmadminPassword: 
+            value: "{{ vm_admin_password }}"
