@@ -15,8 +15,7 @@
         state: present
         location: "{{ deploy_group_location }}"
         resource_group_name: "{{ deploy_group_name }}"
-        template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
         parameters:
             vmadminPassword: 
-              type: "string"
               value: "{{ vm_admin_password }}"
+        template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
