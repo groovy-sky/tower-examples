@@ -7,7 +7,7 @@
       azure_rm_resourcegroup:
         state: present
         location: "{{ deploy_group_location }}"
-        resource_group_name: "{{ deploy_group_name }}"
+        name: "{{ deploy_group_name }}"
 
     # Create or update a template deployment based on uris using parameter and template links
     - name: Create Azure Deploy
