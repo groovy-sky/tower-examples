@@ -18,4 +18,5 @@
         template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
         parameters:
             vmadminPassword: 
+            type: "securestring"
             value: "{{ vm_admin_password }}"
