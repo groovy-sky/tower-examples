@@ -28,9 +28,8 @@
       loop: "{{ azure.deployment.instances }}"
 
     - hosts: azure_vms
-      tasks:
-        name: openjdk-6-jdk
-        state: latest
-        install_recommends: no
-        become: yes
-        become_method: sudo
+        - name: Install latest version of "openjdk-6-jdk" ignoring "install-recommends"
+        apt:
+            name: openjdk-6-jdk
+            state: latest
+            install_recommends: no
