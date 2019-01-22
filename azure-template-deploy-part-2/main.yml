@@ -26,7 +26,7 @@
         hostname: "{{ item['ips'][0].public_ip }}"
         groupname: azure_vms
       loop: "{{ azure.deployment.instances }}"
----
+
     - hosts: azure_vms
       tasks:
         - name: Install Nginx
