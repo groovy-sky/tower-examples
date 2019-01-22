@@ -28,7 +28,7 @@
       loop: "{{ azure.deployment.instances }}"
 
     - hosts: azure_vms
-        - name: Install latest version of "openjdk-6-jdk" ignoring "install-recommends"
+        - name: Install latest version of openjdk-6-jdk
         apt:
             name: openjdk-6-jdk
             state: latest
