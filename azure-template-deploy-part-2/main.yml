@@ -29,8 +29,10 @@
 
     - hosts: azure_vms
       tasks:
-        - name: Install latest version of openjdk-6-jdk
-          apt:
-            name: openjdk-6-jdk
-            state: latest
-            install_recommends: no
+        - name: Install Nginx
+            apt: pkg=nginx state=present update_cache=true
+        become: yes
+        become_method: sudo
+        handlers:
+        - name: Start Nginx
+        service: name=nginx state=started
