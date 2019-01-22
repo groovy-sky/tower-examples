@@ -35,4 +35,4 @@
         become_method: sudo
         handlers:
         - name: Start Nginx
-        service: name=nginx state=started
+            service: name=nginx state=started
