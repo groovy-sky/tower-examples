@@ -19,13 +19,12 @@
             vmadminPassword: 
               value: "{{ vm_admin_password }}"
         template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
-      register: azure
-
+      register: azure_deployment_results
+      
     - name: Add new instance to host group
       add_host:
-        hostname: "{{ item['ips'][0].public_ip }}"
+        hostname: "{{ azure_deployment_results.outputs.vm-fqdn.value }}"
         groupname: azure_vms
-      loop: "{{ azure.deployment.instances }}"
 
     - hosts: azure_vms
       tasks:
