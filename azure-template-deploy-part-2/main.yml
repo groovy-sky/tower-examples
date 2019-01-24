@@ -23,7 +23,7 @@
       
     - name: Add new instance to host group
       add_host:
-        hostname: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
+        hostname: azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn
         groupname: azure_vms
 
 - hosts: azure_vms
