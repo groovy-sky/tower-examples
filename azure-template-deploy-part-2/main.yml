@@ -21,11 +21,12 @@
         template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
       register: azure_deployment_results
       
-    - name: Add new instance to host group
-      add_host:
-        hostname: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
-        groupname: azure_vms
-
+    - name: Add tower host
+      tower_host:
+        name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
+        inventory: "Azure Inventory"
+        state: present
+        
 - hosts: azure_vms
   tasks:
     - name: Try to access application on specific VM
