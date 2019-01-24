@@ -27,6 +27,10 @@
         inventory: "Azure Inventory"
         state: present
         
+    - name: Install ansible-tower-cli
+      pip:
+        name: ansible-tower-cli
+        
 - hosts: azure_vms
   tasks:
     - name: Try to access application on specific VM
