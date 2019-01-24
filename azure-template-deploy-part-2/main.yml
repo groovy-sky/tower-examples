@@ -26,12 +26,12 @@
         hostname: "{{ azure_deployment_results.outputs.vm-fqdn.value }}"
         groupname: azure_vms
 
-    - hosts: azure_vms
-      tasks:
-        - name: Install Nginx
-            apt: pkg=nginx state=present update_cache=true
-        become: yes
-        become_method: sudo
-        handlers:
-        - name: Start Nginx
-        service: name=nginx state=started
+- hosts: azure_vms
+  tasks:
+	- name: Install Nginx
+		apt: pkg=nginx state=present update_cache=true
+	become: yes
+	become_method: sudo
+	handlers:
+	- name: Start Nginx
+	service: name=nginx state=started
