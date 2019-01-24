@@ -29,6 +29,7 @@
       tower_host:
         name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
         inventory: "Azure Inventory"
+        host: http://127.0.0.1:8080
         state: present
 
 - hosts: azure_vms
