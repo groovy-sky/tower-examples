@@ -20,17 +20,17 @@
               value: "{{ vm_admin_password }}"
         template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
       register: azure_deployment_results
-      
+
+    - name: Install ansible-tower-cli
+      pip:
+        name: ansible-tower-cli
+
     - name: Add tower host
       tower_host:
         name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
         inventory: "Azure Inventory"
         state: present
-        
-    - name: Install ansible-tower-cli
-      pip:
-        name: ansible-tower-cli
-        
+
 - hosts: azure_vms
   tasks:
     - name: Try to access application on specific VM
