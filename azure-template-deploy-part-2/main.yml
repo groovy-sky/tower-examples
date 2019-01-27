@@ -24,20 +24,3 @@
     - name: Install ansible-tower-cli
       pip:
         name: ansible-tower-cli
-
-    - name: Add tower host
-      tower_host:
-        name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
-        inventory: "Azure Inventory"
-        tower_host: "{{ awx_host_address }}"
-        tower_username: admin
-        tower_password: "{{ awx_host_password }}"
-        state: present
-
-- hosts: azure_vms
-  tasks:
-    - name: Try to access application on specific VM
-      uri:
-        url: https://wwww.ya.ru/
-        method: GET
-      register: output
