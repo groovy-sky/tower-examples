@@ -30,5 +30,5 @@
     - name: Add tower host
       tower_host:
         name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
-        inventory: "Azure Inventory"
+        inventory: "{{ awx_inevntory }}"
         state: present
