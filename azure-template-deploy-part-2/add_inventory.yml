@@ -1,3 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  
+    - name: Install ansible-tower-cli
+      pip:
+        name: ansible-tower-cli
+
     - name: Add tower host
       tower_host:
         name: "{{ azure_deployment_results.deployment.instances[0].ips[0].dns_settings.fqdn }}"
