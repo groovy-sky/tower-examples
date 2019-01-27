@@ -20,7 +20,3 @@
               value: "{{ vm_admin_password }}"
         template_link: 'https://raw.githubusercontent.com/groovy-sky/azure/master/ansible-tower-00/azuredeploy.json'
       register: azure_deployment_results
-
-    - name: Install ansible-tower-cli
-      pip:
-        name: ansible-tower-cli
